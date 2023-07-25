@@ -1,6 +1,48 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import MenuDrawer from 'react-native-side-drawer';
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+  }
+
+  toggleOpen = () => {
+    this.setState({ open: !this.state.open });
+  };
+
+  drawerContent = () => {
+    return (
+      <TouchableOpacity onPress={this.toggleOpen} style={styles.animatedBox}>
+        <Text>Close</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <MenuDrawer
+          open={this.state.open}
+          position={'left'}
+          drawerContent={this.drawerContent()}
+          drawerPercentage={45}
+          animationTime={250}
+          overlay={true}
+          opacity={0.4}
+        >
+          <TouchableOpacity onPress={this.toggleOpen} style={styles.body}>
+            <Text>Open</Text>
+          </TouchableOpacity>
+        </MenuDrawer>
+      </View>
+    );
+  }
+}
+
 
 export default function App() {
   return (
@@ -108,5 +150,16 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
+  },
+  animatedBox: {
+    flex: 1,
+    backgroundColor: "#38C8EC",
+    padding: 10
+  },
+  body: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F04812'
   }
 });
