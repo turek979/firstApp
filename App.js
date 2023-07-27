@@ -34,18 +34,15 @@ class Example extends React.Component {
           overlay={true}
           opacity={0.4}
         >
-          <TouchableOpacity onPress={this.toggleOpen} style={styles.body}>
-            <Text>Open</Text>
-          </TouchableOpacity>
+
         </MenuDrawer>
       </View>
     );
   }
 }
-
-
 export default function App() {
   return (
+    
       <View>
         <View style={styles.nav}>
         <Image source={require('./assets/gnom2.png')} style={styles.logo} />
@@ -53,6 +50,9 @@ export default function App() {
         <ScrollView style={styles.container}>        
           <View style={styles.blogPost}>
             {/* <Image source={require('./assets/epy.jpg')} style={styles.blogPhoto} />   */}
+            <TouchableOpacity onPress={this.toggleOpen} style={styles.body}>
+            <Text>Open</Text>
+          </TouchableOpacity>
             <Text style={styles.header}>Lorem Ipsum</Text>
             <Text style={styles.text}>Dzisiaj w gnomie promocja etc. etc. Kup coś
               asdasdasdasdadsasdasdasdadsadsasd
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     height: '85%',
     backgroundColor: '#18191b',
+    zIndex: 0,
   },
   nav: {
     backgroundColor: '#3F3D3E',
