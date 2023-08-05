@@ -13,7 +13,6 @@ class Example extends React.Component {
   toggleOpen = () => {
     this.setState({ open: !this.state.open });
   };
-
   drawerContent = () => {
     return (
       <TouchableOpacity onPress={this.toggleOpen} style={styles.animatedBox}>
